@@ -54,13 +54,34 @@ var DonutChart = function() {
 
 
 			var path = ele.select('.arc').selectAll('path').data(pie(data));
-
+		
 			path.exit().remove();
+			// 
 			path.enter().append('path')
 				.attr('d', arc)
 				.style('fill', function(d) {
 					return color(d.data.id);
-				});
+				})
+				.on('mouseover', function(d){
+					var total = d3.sum(data.map(function(d){
+						return d.count;
+					}))
+
+					var percent = Math.round(1000 * d.data.count / total) / 10;
+					tooltip.select('.label').html(d.data.id);
+					tooltip.select('.count').html(d.data.count);
+					tooltip.select('.percent').html(percent + '%');
+					tooltip.style('display', 'block');
+				})
+				.on('mouseout', function(d){
+					tooltip.style('display', 'none');
+				})
+				.transition()
+				.ease(d3.easeLinear)
+				.duration(1000)
+				.attrTween('d', pieTween);
+				
+			// path.exit().remove();
 
 			var texts = ele.select('.arc').selectAll('text').data(pie(data));
 				texts.enter()
@@ -107,21 +128,6 @@ var DonutChart = function() {
 			tooltip.append('div')
 				.attr('class', 'percent');
 
-			path.on('mouseover', function(d){
-				var total = d3.sum(data.map(function(d){
-					return d.count;
-				}))
-
-				var percent = Math.round(1000 * d.data.count / total) / 10;
-				tooltip.select('.label').html(d.data.id);
-				tooltip.select('.count').html(d.data.count);
-				tooltip.select('.percent').html(percent + '%');
-				tooltip.style('display', 'block');
-			});
-
-			path.on('mouseout', function(d){
-				tooltip.style('display', 'none');
-			});
 
 			path.transition()
 				.ease(d3.easeLinear)
