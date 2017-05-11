@@ -40,27 +40,32 @@ var DonutChart = function() {
 				.outerRadius(radius - 40)
 				.innerRadius(radius - 40);
 
-			var ele = d3.select(this).selectAll('svg').data([data]);
-			var svg = ele.enter().append('svg')
+			var ele = d3.select(this);
+			var svg = ele.selectAll('svg').data([data]);
+
+			var svgEnter = svg.enter()
+				.append('svg')
 				.attr('width', width)
-				.attr('height', height)
-				.append('g')
-				.attr('transform', 'translate(' + width/2 + "," + height/2 + ")");
+				.attr('height', height);
+
+			svgEnter.append('g')
+				.attr('transform', 'translate(' + width/2 + "," + height/2 + ")")
+				.attr('class', 'arc');
 
 
-			var g = svg.selectAll('.arc')
-				.data(pie(data))
-				.enter().append('g');
-			g.attr('class', 'arc')
-				.merge(g);
+			var path = ele.select('.arc').selectAll('path').data(pie(data));
 
-			var path = g.append('path')
+			path.exit().remove();
+			path.enter().append('path')
 				.attr('d', arc)
 				.style('fill', function(d) {
 					return color(d.data.id);
 				});
 
-			g.append('text')
+			var texts = ele.select('.arc').selectAll('text').data(pie(data));
+				texts.enter()
+				.append('text')
+				.merge(texts)
 				.transition()
 				.ease(d3.easeLinear)
 				.duration(1200)
@@ -123,7 +128,7 @@ var DonutChart = function() {
 				.duration(1000)
 				.attrTween('d', pieTween);
 
-			g.exit().remove();
+			texts.exit().remove();
 		})
 
 	}
