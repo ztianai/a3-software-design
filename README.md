@@ -1,4 +1,4 @@
-# reusable-donut-chart
+# a3-software-design
 
 Reusable donut chart is an API that allows you quickly and easily generate a donut chart. Donut chart has the ability to show the percentages of different features or elements of the dataset. Below is quick tutorial on how to use this reusable donut chart.
 
@@ -28,9 +28,7 @@ Reusable donut chart is an API that allows you quickly and easily generate a don
 ## Step 5 Create Donut Chart
 > To create the donut chart, call `DonutChart()` to make a new chart instance.
 > Now select the `<div>` element inside `index.html` to render the donut chart. Bind the data to the `<div>` using `.datum` call and pass in `chartData` we got from Step 4. DonutChart() will return a function for you to use to build the chart. Methods can be called on DonutChart() to change its characteristics.
-> If you did the above steps correctly, run your local host, you should be able to see a donut chart similar to the picture below.
 
-![donut chart example](img/example.png)
 
 ## Step 6 Modify and Change the look of the Donut Chart
 > Now you have a donut chart show up, you can use a couple methods to change the look of it.
