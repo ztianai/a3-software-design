@@ -62,24 +62,28 @@ Creates a new donut chart
 #### .height(h)
 
 value: integer
+
 Sets the height of the draw canvas
 * `param h` height of canvas
 
 #### .width(w)
 
 value: integer
+
 Sets the width of the draw canvas
 * `param w` width of canvas
 
 #### .radius(r)
 
 value: integer
+
 Sets the radius of the donut
 * `param r` radius of the donut chart
 
 #### .padAngle(a)
 
 value: float
+
 Sets how rounded the corners are on each slice
 * `param a` angle of the slice corners
 
@@ -87,6 +91,7 @@ Sets how rounded the corners are on each slice
 #### .cornerRadius(c)
 
 value: integer
+
 Sets the gap between slices
 * `param c` the gap between slices
 
@@ -94,6 +99,7 @@ Sets the gap between slices
 #### .tooltipWidth(tw)
 
 value: integer
+
 Sets the width of the tooltip box
 * `param tw` the width of the tooltip box
 
@@ -101,6 +107,7 @@ Sets the width of the tooltip box
 #### .tooltipTop(top)
 
 value: integer
+
 Sets the top distance between tooltip box and the svg element
 * `param top` distance between the top side of the tooltip box and svg element 
 
@@ -108,6 +115,7 @@ Sets the top distance between tooltip box and the svg element
 #### .tooltipFont(f)
 
 value: integer
+
 Sets the tooltip's font size
 * `param f` font size of the text inside tooltip
 
@@ -115,6 +123,7 @@ Sets the tooltip's font size
 #### .tooltipPadding(p)
 
 value: integer
+
 Sets the padding of the tooltip box
 * `param p` the padding of the tooltip box
 
@@ -122,6 +131,7 @@ Sets the padding of the tooltip box
 #### .tooltipLeft(l)
 
 value: integer
+
 Sets the left distance between the tooltip box and the svg element
 * `param l` distance between the left side of tooltip box and the svg element
  
